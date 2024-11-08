@@ -2,19 +2,21 @@ const crashbtn = document.getElementById('crashbtn');
 const responsibilityCheckbox = document.getElementById('responsibilityCheckbox');
 
 responsibilityCheckbox.addEventListener('change', () => {
+    console.log("Checkbox checked: " + responsibilityCheckbox.checked); // Verifikasi status checkbox
     crashbtn.disabled = !responsibilityCheckbox.checked;
     crashbtn.style.backgroundColor = responsibilityCheckbox.checked ? "red" : "";
 });
 
 crashbtn.addEventListener('click', async function(event) {
+    console.log("Button clicked");
     if (!responsibilityCheckbox.checked) {
         alert("Please check the responsibility box first.");
-        console.log("check first")
         return;
     }
 
     alert("page will crash in 5s");
     await sleep(5000);
+    console.log("Crash starting...");
 
     let arr = [];
     while (true) {
